@@ -19,6 +19,10 @@ sudo apt-get install -y curl git python-software-properties zlib1g-dev build-ess
    sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev \
    python-software-properties libffi-dev
 
+# Need nodejs to load 'uglifier' Gem.
+# http://stackoverflow.com/questions/34420554/there-was-an-error-while-trying-to-load-the-gem-uglifier-bundlergemrequire
+sudo apt-get install -y nodejs
+
 echo
 echo '============================'
 echo '2. rbenv'
