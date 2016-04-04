@@ -22,25 +22,42 @@ markings, and adding notes for each below.
   process group (...): Inappropriate ioctl for device"), but these
   don't appear to be fatal.
 
+After log in with `vagrant ssh`, was given a message "System restart
+required", so rebooted:
+
+```
+$ vagrant ssh
+$ sudo reboot
+$ vagrant ssh  # kicked out, relog in
+```
+
 ## Twenty
 
-The `bookshelf` folder here is synced to the vagrant box, so I'm using
-that for the project, instead of `~/projects`.
+At this point, switching over to the tutorial at
+http://guides.rubyonrails.org/getting_started.html
+
+Building the project in the /vagrant folder, as the `Vagrantfile` has
+a synced_folder `blog`.
+
 
 ```
+$ vagrant ssh
 $ cd /vagrant
-$ rails new bookshelf
+$ rails new blog
 ```
 
-The `bundle install` step takes a while, but it should complete successfully.
+Start the server:
 
-Use `$ rails server -b 0.0.0.0` to start the server.
+```
+$ cd /vagrant/blog
+$ bin/rails server -b 0.0.0.0
+```
 
-* There is no such thing as `/script/server`
-* Rails 4.2 only accepts connections from localhost by default, so you
-can only access the server from localhost (eg. inside the VM);
-connections from another machine (eg. VM's host) will not work.  Can
-change the binding with `-b` so that anything can connect.
+Note re `-b`: Rails 4.2 only accepts connections from localhost by
+default, so you can only access the server from localhost (eg. inside
+the VM); connections from another machine (eg. VM's host) will not
+work.  Can change the binding with `-b` so that anything can connect,
+including the host machine.
 
 ```
 vagrant@rails:/vagrant/bookshelf$ rails server -b 0.0.0.0
@@ -53,8 +70,5 @@ vagrant@rails:/vagrant/bookshelf$ rails server -b 0.0.0.0
 [2016-03-28 22:18:38] INFO  WEBrick::HTTPServer#start: pid=31345 port=3000
 ```
 
-Since the Vagrantfile has a private network set up, you can reach the
-guest with http://172.28.33.10:3000/.
-
-## Twenty Five
+Can see the site at http://172.28.33.10:3000/, due to the private network set up.
 

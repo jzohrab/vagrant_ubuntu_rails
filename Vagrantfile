@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     rails.vm.network :private_network, ip: "172.28.33.10"
     rails.vm.provision "shell", privileged: false, path: "provision.sh"
 
-    rails.vm.synced_folder "bookshelf", "/bookshelf", create: true
+    rails.vm.synced_folder "blog", "/blog", create: true
   end
    
 end
